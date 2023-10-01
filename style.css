@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-desktop.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/MoonStars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-desktop-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/Sun.svg);
+}
+
+/*Caso o seletor margin tenha 4 valores especificados, acatará da seguinte forma: top, right, bottom, left (em cima, direita, em baixo e esquerda), ou seja, no sentido horário.*/
+
+body {
+  /*
+  background-image: url(./assets/bg-desktop.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  */
+
+  /*background: color image repeat position/size*/
+
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+/*O # é um selecionador de IDs e o . é um selecionador de classes*/
+
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0px 24px;
+}
+
+/*Display block faz o conteúdo ocupar toda a "caixa" disponível fazendo com que os demais elementos fiquem acima/abaixo dele
+
+Para utilizar o margin: auto em elementos com padrão inline, é necessário colocar display: block, para assim o código acatar o comando margin (Exemplo de tag inline: a)
+
+Exemplo abaixo
+
+#profile img {
+  width: 112px;
+  display: block;
+  margin: auto;
+}*/
+
+/*
+Ou podemos fazer isso diretamente no elemento pai (no caso profile), conforme abaixo, adicionando text-align:center (este comando não serve para elementos com block padronizados)
+*/
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/*Switch*/
+
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/*Links (<ul>*/
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0px;
+}
+
+/*o "gap" adiciona espaço ENTRE OS ELEMENTOS mas não aos arredores*/
+
+ul li a {
+  display: flex;
+  padding: 16px 24px;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  text-decoration: none;
+  font-weight: 500; /*Ou bold, já que o 400 é o padrão e o 500 é o negrito*/
+  transition: background 0.3s;
+}
+
+/*pseudo-selector (hover) aplica-se coisas quando colocar o mouse em cima*/
+
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/*O alpha do rgba significa "transparência
+caniuse.com <- site para propriedades aceitaveis*/
+
+#social-links {
+  padding: 24px;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+  padding: 16px;
+}
+
+footer {
+  padding: 24px 0px;
+  text-align: center;
+}
